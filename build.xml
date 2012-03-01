@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project basedir="." default="jsdoc">
+
+	<!-- setting -->
+	<!--
+	<propertyfile file="bulid.properties" ></propertyfile>
+	-->
+	
+	<property name="version" value="1.0"/>
+	
+	<property name="output.dir" value="${basedir}/output/"/>
+	
+	
+	<property name="input.dir" value="${basedir}/input/"/>
+	
+    <!--
+	<property name="input.dir" value="D:/MyEclipse/workspace/jsdoc/input/fdev-v4"/>
+	-->
+	
+	<property name="jsdoc.toolkit.dir" value="${basedir}/jsdoc-toolkit/"/>
+	<property name="jsdoc.dir" value="${basedir}/bin"/>
+
+	
+	<taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit"
+		classpath="${basedir}/lib/jsdoc-toolkit-ant-task-1.1.2.jar;${basedir}/lib/js.jar"/>
+	
+
+	<!-- clean -->
+	<target name="clean" description="delete files">
+		<delete dir="${output.dir}"/>
+
+		<echo message="delete files finished"/>
+	</target>
+
+	<!-- jsdoc -->
+	<target name="jsdoc" depends="clean"
+     description="Create jsdoc.">
+
+		<mkdir dir="${output.dir}"/>
+
+		 <jsdoctoolkit jsdochome="${jsdoc.toolkit.dir}" encoding="GBK" template="alidoc" outputdir="${output.dir}" inputdir="${input.dir}"/>
+			
+
+		<echo message="jsdoc over."/>
+
+	</target>
+
+
+
+</project>
